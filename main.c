@@ -28,7 +28,8 @@ int main() {
 		int win = 0;
 		draw_game(y, x);
 		while (1) {
-			// 키 입력을 받지 않은 경우 continue를 사용하는 명령어를 작성해주세요.
+			// 키 입력을 받지 않은 경우
+			// continue를 사용하는 명령어를 작성해주세요.
 
 			int key = getch();
 			if (key == 's' && y < 2) y += 1;
@@ -70,6 +71,15 @@ void draw_lobby(int select) {
 	// select 값에 따라 start, exit로 선택이 되도록 만들어주세요.
 }
 
+void draw_end(int win) {
+	draw_game(-1, -1);
+	printf("\n\n");
+	if (win == 1) // X가 이긴 경우를 출력하는 부분
+		if (win == 2) // O가 이긴 경우를 출력하는 부분
+			if (win == 3) // 비긴 경우를 출력하는 부분
+				printf("\n\npress any key to go lobby..");
+}
+
 void draw_game(int y, int x) {
 	system("cls");
 	char output[3][3][3] = {	// 3차원 배열을 쓰게 된 이유
@@ -108,13 +118,4 @@ int who_win() {
 	// 반복문을 사용하여 누가 이겼는지를 리턴해주는 코드를 작성하세요.
 	// 아무도 이긴 상태가 아니라면 0, X가 이겼다면 1, O가 이겼다면 2를 리턴
 	// 대각선 방향도 생각하는거 잊지 말아주세요!
-}
-
-void draw_end(int win) {
-	draw_game(-1, -1);
-	printf("\n\n");
-	if (win == 1) // X가 이긴 경우를 출력하는 부분
-	if (win == 2) // O가 이긴 경우를 출력하는 부분
-	if (win == 3) // 비긴 경우를 출력하는 부분
-	printf("\n\npress any key to go lobby..");
 }
