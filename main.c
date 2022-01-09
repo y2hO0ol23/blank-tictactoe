@@ -51,7 +51,7 @@ int main() {
 int lobby() {
 	int select = 0;
 	draw_lobby(select);
-	while(1) {
+	while (1) {
 		// 키 입력을 받지 않은 경우 continue를 사용하는 명령어를 작성해주세요.
 
 		// key 변수에 입력받은 키 값을 넣는 명령어를 작성해주세요.
@@ -63,6 +63,12 @@ int lobby() {
 		draw_lobby(select);
 	}
 	return select;
+}
+
+int who_win() {
+	// 반복문을 사용하여 누가 이겼는지를 리턴해주는 코드를 작성하세요.
+	// 아무도 이긴 상태가 아니라면 0, X가 이겼다면 1, O가 이겼다면 2를 리턴
+	// 대각선 방향도 생각하는거 잊지 말아주세요!
 }
 
 void draw_lobby(int select) {
@@ -92,13 +98,13 @@ void draw_game(int y, int x) {
 	};
 	output[y][x][0] = 'V';
 	output[y][x][1] = '\0'; // 선택해둔 좌표에 V를 출력하도록 함
-	  printf("┌─%s┬─%s┬─%s┐", output[0][0], output[0][1], output[0][2]);  printf("\t% c turn\n", (turn == 0) ? 'X' : 'O');
+	printf("┌─%s┬─%s┬─%s┐", output[0][0], output[0][1], output[0][2]);  printf("\t% c turn\n", (turn == 0) ? 'X' : 'O');
 	// 테이블의 1번에는 X, 2번에는 O가 있기 때문에 X와 O를 field값에 따라 출력 할 수 있게 됩니다.
-	  printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[0][i]]); 
+	printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[0][i]]);
 	printf("\n├─%s┼─%s┼─%s┤\n", output[1][0], output[1][1], output[1][2]);
-	  printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[1][i]]);
+	printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[1][i]]);
 	printf("\n├─%s┼─%s┼─%s┤\n", output[2][0], output[2][1], output[2][2]);
-	  printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[2][i]]);
+	printf("│"); for (int i = 0; i < 3; i++) printf(" %c│", table[field[2][i]]);
 	printf("\n└──┴──┴──┘");
 }
 
@@ -107,15 +113,9 @@ int press(int y, int x) { // 해당 좌표에 돌이 없다면 돌을 놓는 함
 	field[y][x] = 1 + turn;
 	turn = (turn + 1) % 2;
 	turn_cnt++;
-	
+
 	int w = who_win();
 	if (w) return w;
 	if (turn_cnt == 9) return 3;
 	return 0;
-}
-
-int who_win() {
-	// 반복문을 사용하여 누가 이겼는지를 리턴해주는 코드를 작성하세요.
-	// 아무도 이긴 상태가 아니라면 0, X가 이겼다면 1, O가 이겼다면 2를 리턴
-	// 대각선 방향도 생각하는거 잊지 말아주세요!
 }
