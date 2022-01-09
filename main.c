@@ -75,9 +75,9 @@ void draw_end(int win) {
 	draw_game(-1, -1);
 	printf("\n\n");
 	if (win == 1) // X가 이긴 경우를 출력하는 부분
-		if (win == 2) // O가 이긴 경우를 출력하는 부분
-			if (win == 3) // 비긴 경우를 출력하는 부분
-				printf("\n\npress any key to go lobby..");
+	if (win == 2) // O가 이긴 경우를 출력하는 부분
+	if (win == 3) // 비긴 경우를 출력하는 부분
+	printf("\n\npress any key to go lobby..");
 }
 
 void draw_game(int y, int x) {
