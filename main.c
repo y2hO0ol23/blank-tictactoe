@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h> // system, getch, kbhit 함수를 사용을 위한 해더파일
+#include <stdlib.h> // system 함수를 사용을 위한 해더파일
 #include <string.h> // memset 함수를 사용하기 위한 해더파일
+#include <conio.h> // getch, khbit 함수를 사용하기 위한 해더파일
 
 int lobby();
 void draw_lobby(int select);
